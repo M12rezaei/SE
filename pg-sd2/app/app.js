@@ -142,7 +142,7 @@ app.post('/add-note', async function (req, res) {
 });
 
 // A post route to recieve new data for a students' programme
-app.post('allocate-programme', function (req, res) {
+app.post('/allocate-programme', function (req, res) {
     params = req.body;
     console.log(params.programme);
     res.send('form submitted');

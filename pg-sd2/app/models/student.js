@@ -41,7 +41,7 @@ class Student {
 
     }
     async addStudentNote(note) {
-        var sql = "UPDATE Students SET note = ? WHERE Students.id = ?"
+        var sql = "UPDATE Students SET note = ? WHERE id = ?";
         const result = await db.query(sql, [note, this.id]);
         //Ensure the note property in the model is up to date
         this.note = note;
@@ -49,7 +49,7 @@ class Student {
 
     }
     async deleteStudentProgramme(programme) {
-        var sql = "DELETE FROM Student-Programme WHERE id =?";
+        var sql = "DELETE FROM Student_Programme WHERE id =?";
         const result = await db.query(sql, [this.id]);
         this.programme = '';
         return result;
@@ -65,7 +65,7 @@ class Student {
     async updateStudentProgramme(programme) {
         const existing = await this.getStudentProgramme();
         if (this.programme) {
-            await this.deleteStudentProgramme(programme);
+            await this.deleteStudentProgramme(this.programme);
         }
         await this.addStudentProgramme(programme);
     }
